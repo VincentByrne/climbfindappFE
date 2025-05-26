@@ -9,7 +9,7 @@
       <th>Category</th>
       <th>Added by</th>
       <th>Coordinates</th>
-      <th>Actions</th>
+      <th>View Info</th>
     </tr>
   </thead>
   <tbody>

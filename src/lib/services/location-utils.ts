@@ -42,10 +42,17 @@ export async function refreshLocationMap(map: any) {
   const locations = await climbfindService.getLocations(loggedInUser.token);
   locations.forEach((location: Location) => {
     if (location.userid && typeof location.userid !== "string") {
-      const popup = `${location.title} - added by ${location.userid.firstName} ${location.userid.lastName}`;
+      const popup = `
+        <div><h4>${location.title}</h4><p>Category - ${location.category}</p><p>added by - ${location.userid.firstName} ${location.userid.lastName}</p>
+        <a href="/locations/${location._id}" class="button is-small">
+        <i class="fas fa-info-circle"></i>Details</a></div>
+        ${location.images && location.images.length > 0 ? `<img src="${location.images[0].imageUrl}" style="width:100px;height:60px;object-fit:cover;margin-bottom:5px;"/>` : ''}
+        
+      `;
       map.addMarker(location.latitude, location.longitude, popup);
     }
   });
   const lastLocation = locations[locations.length - 1];
   if (lastLocation) map.moveTo(lastLocation.latitude, lastLocation.longitude);
 }
+
