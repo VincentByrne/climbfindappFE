@@ -28,7 +28,7 @@
 <div class="columns">
   <div class="column">
     <Card title="Climbing Locations Map">
-      <LeafletMap height={52.5} bind:this={map} />
+      <LeafletMap height={58} bind:this={map} />
     </Card>
   </div>
   <div class="column">
